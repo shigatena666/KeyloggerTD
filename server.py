@@ -13,7 +13,7 @@ app = Flask(__name__)
 # Génération des clés RSA
 public_key, private_key = rsa.newkeys(2048)
 
-# Affichage de la clé publique et privée
+# Affichage de la clé publique et privée (debug)
 print(public_key.save_pkcs1().decode())
 print(private_key.save_pkcs1().decode())
 
