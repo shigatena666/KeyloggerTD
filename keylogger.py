@@ -51,7 +51,8 @@ def process_keys(key):
 
     arrows = [pynput.keyboard.Key.up, pynput.keyboard.Key.down, pynput.keyboard.Key.left, pynput.keyboard.Key.right]
     try:
-        if key == pynput.keyboard.Key.space:
+        # Fix pour Mac M1 car la touche pour espace n'est pas détéctée avec Key.space.
+        if key == pynput.keyboard.Key.space or pynput.keyboard.KeyCode.from_char(' '):
             log += ' '
         elif key == pynput.keyboard.Key.enter:
             log += '\n'
@@ -59,7 +60,6 @@ def process_keys(key):
             log = log[:-1]
         elif key.char in arrows:
             log += ''
-        # M1 Mac fix because key space is not the same.
         elif key == pynput.keyboard.KeyCode.from_char(' '):
             log += ' '
         else:
